@@ -130,9 +130,11 @@ public class Journal
 
             Entry entry = _entries[i];
 
-            Console.WriteLine(entry._date);
-            Console.WriteLine(entry._promptText);
-            Console.WriteLine(entry._entryText);
+            Console.Write(entry._date);
+            Console.Write(" | ");
+            Console.Write(entry._promptText);
+            Console.Write(" | ");
+            Console.Write(entry._entryText);
             Console.WriteLine();
 
             i = i + 1;
@@ -152,9 +154,11 @@ public class Journal
         {
             Entry entry = _entries[i];
 
-            outputFile.WriteLine(entry._date);
-            outputFile.WriteLine(entry._promptText);
-            outputFile.WriteLine(entry._entryText);
+            outputFile.Write(entry._date);
+            outputFile.Write("|");
+            outputFile.Write(entry._promptText);
+            outputFile.Write("|");
+            outputFile.Write(entry._entryText);
             outputFile.WriteLine();
 
             i = i + 1;
@@ -163,6 +167,30 @@ public class Journal
 
     public void LoadFromFile(string file)
     {
+        string[] lines = File.ReadAllLines(file);
 
+        // Entry entry = new Entry();
+        // int i = 0;
+
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split(",");
+
+            string date = parts[0];
+            string promptText = parts[1];
+            string entryText = parts[2];
+
+            // if (parts.Count == 0)
+
+            // _entries.Add(newEntry);
+
+            Console.WriteLine($"{date}, {promptText}, {entryText}");
+            Console.WriteLine($"{parts[0]}{parts[1]}{parts[2]}");
+            // Console.WriteLine(data);
+            // Console.WriteLine(parts[i]);
+            // i++;
+        }
+        
+        // Console.WriteLine(parts[i]);
     }
 }

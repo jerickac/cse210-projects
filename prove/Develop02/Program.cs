@@ -61,7 +61,7 @@ class Program
 
             else if (answer == 2)
             {
-                Console.WriteLine("second condition is working just fine");
+                Console.WriteLine();
 
                 // Journal journal = new Journal();
                 journal.DisplayAll();
@@ -72,6 +72,13 @@ class Program
                 Console.WriteLine("What name do you want to give to the file?");
                 string file = Console.ReadLine();   
                 journal.SaveToFile(file);
+            }
+
+            else if (answer == 3)
+            {
+                Console.WriteLine("What file do you want to open?");
+                string file = Console.ReadLine();   
+                journal.LoadFromFile(file);
             }
         }
 
