@@ -6,6 +6,7 @@ class Program
     {
         int answer = 0;
         Journal journal = new Journal();
+        // Entry entry = new Entry();
 
         while (answer != 5)
         {
@@ -64,6 +65,13 @@ class Program
 
                 // Journal journal = new Journal();
                 journal.DisplayAll();
+            }
+
+            else if (answer == 4)
+            {
+                Console.WriteLine("What name do you want to give to the file?");
+                string file = Console.ReadLine();   
+                journal.SaveToFile(file);
             }
         }
 

@@ -1,3 +1,5 @@
+using System.IO;
+
 public class Journal
 {
     public List<Entry> _entries = new List<Entry>();
@@ -32,7 +34,7 @@ public class Journal
         // Console.WriteLine("The code worked just fine.");
 
         // Testing printing the entries from here:
-        
+
         // while (i != _entries.Count)
         // {
         // Console.WriteLine($"{_entries[i]._date}-{_entries[i]._promptText}-{_entries[i]._entryText}");
@@ -139,7 +141,24 @@ public class Journal
 
     public void SaveToFile(string file)
     {
+        // Console.WriteLine("What name do you want to give to the file?");
+        // string file = Console.ReadLine();
 
+        int i = 0;
+
+        using(StreamWriter outputFile = new StreamWriter(file))
+
+        while (i != _entries.Count)
+        {
+            Entry entry = _entries[i];
+
+            outputFile.WriteLine(entry._date);
+            outputFile.WriteLine(entry._promptText);
+            outputFile.WriteLine(entry._entryText);
+            outputFile.WriteLine();
+
+            i = i + 1;
+        }
     }
 
     public void LoadFromFile(string file)
