@@ -1,3 +1,8 @@
+// I added another option, "5. Read Motivation Quote", which calls a method in Journal that calls
+// a function that generate a quote from some church authority about journaling. I think that 
+// sometimes people just don't understand the importante of writing on a journal. However, a quote
+// from a prophet, for example, can be a good motivation and reminder of its importante
+
 using System;
 
 class Program
