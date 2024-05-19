@@ -5,6 +5,8 @@ public class Journal
     public List<Entry> _entries = new List<Entry>();
     // int i = 0;
 
+    public string _motivationQuote;
+
     public void AddEntry(Entry newEntry)
     {
         // // ALL THE CODE THAT WAS ALREADY HERE:
@@ -29,6 +31,31 @@ public class Journal
         // the Add() function to be the same as the method, which is newEntry:
 
         _entries.Add(newEntry);
+
+
+        // piece from the original code to test the DisplayAll() method
+        // but with some changes after getting feedback from ChatGPT 
+        
+        // int i = 0;
+
+        // while (i != _entries.Count)
+        // {
+        //     Console.WriteLine();
+        //     Console.WriteLine($"Date: {_entries[i]._date}");
+        //     Console.WriteLine($"Prompt Text: {_entries[i]._promptText}");
+        //     Console.WriteLine($"Entry Text: {_entries[i]._entryText}");
+        //     i = i + 1;
+        // }
+        //
+        // Here's the original:
+        // int i = 0;
+        
+        // while (i != _entries.Count)
+        // {
+        // Console.WriteLine(_entries[i]);
+        // i = i + 1;
+        // }
+        // But that was just giving me the location of the _entries list in the memory
 
         // A test code:
         // Console.WriteLine("The code worked just fine.");
@@ -115,28 +142,43 @@ public class Journal
         // with some ideas I got from ChatGPT of how to do
         // it using less code:
 
+        // int i = 0;
+
+        // The following code was suggested by chatGPT and I used for reference
+
+        // while (i != _entries.Count)
+        // {
+        // // //     // This code below was just a copied code
+        // // //     // from ChatGPT while I was trying to access
+        // // //     // the _entries list from this method.
+
+        // // //     // Console.WriteLine($"Date: {_entries[i]._date}");
+        // // //     // Console.WriteLine($"Prompt: {_entries[i]._promptText}");
+        // // //     // Console.WriteLine($"Entry: {_entries[i]._entryText}");
+        // // //     // Console.WriteLine();
+
+        //     Entry entry = _entries[i];
+
+        //     Console.Write("Date: ");
+        //     Console.WriteLine(entry._date);
+        //     Console.Write("Prompt Text: ");
+        //     Console.WriteLine(entry._promptText);
+        //     Console.Write("Entry Text: ");
+        //     Console.WriteLine(entry._entryText);
+        //     Console.WriteLine();
+
+
+        // That is my original code with some changes I saw was necessary from 
+        // the code chatGPT gave me.
+
         int i = 0;
 
         while (i != _entries.Count)
         {
-        // //     // This comment below was just a copied code
-        // //     // from ChatGPT while I was trying to access
-        // //     // the _entries list from this method.
-
-        // //     // Console.WriteLine($"Date: {_entries[i]._date}");
-        // //     // Console.WriteLine($"Prompt: {_entries[i]._promptText}");
-        // //     // Console.WriteLine($"Entry: {_entries[i]._entryText}");
-        // //     // Console.WriteLine();
-
-            Entry entry = _entries[i];
-
-            Console.Write(entry._date);
-            Console.Write(" | ");
-            Console.Write(entry._promptText);
-            Console.Write(" | ");
-            Console.Write(entry._entryText);
+            Console.WriteLine($"Date: {_entries[i]._date}");
+            Console.WriteLine($"Prompt Text: {_entries[i]._promptText}");
+            Console.WriteLine($"Entry Text: {_entries[i]._entryText}");
             Console.WriteLine();
-
             i = i + 1;
         }
     }
@@ -155,21 +197,19 @@ public class Journal
             Entry entry = _entries[i];
 
             outputFile.Write(entry._date);
-            outputFile.Write("|");
+            outputFile.Write(",");
             outputFile.Write(entry._promptText);
-            outputFile.Write("|");
-            outputFile.Write(entry._entryText);
-            outputFile.WriteLine();
-
+            outputFile.Write(",");
+            outputFile.WriteLine(entry._entryText);
             i = i + 1;
         }
     }
 
     public void LoadFromFile(string file)
     {
+        // Attempt 1:
         string[] lines = File.ReadAllLines(file);
 
-        // Entry entry = new Entry();
         // int i = 0;
 
         foreach (string line in lines)
@@ -184,13 +224,74 @@ public class Journal
 
             // _entries.Add(newEntry);
 
-            Console.WriteLine($"{date}, {promptText}, {entryText}");
-            Console.WriteLine($"{parts[0]}{parts[1]}{parts[2]}");
+            Console.Write("Date: ");
+            Console.WriteLine(date);
+            Console.Write("Prompt Text: ");
+            Console.WriteLine(promptText);
+            Console.Write("Entry Text: ");
+            Console.WriteLine(entryText);
+            Console.WriteLine();
+            // Console.WriteLine($"{parts[0]}{parts[1]}{parts[2]}");
             // Console.WriteLine(data);
             // Console.WriteLine(parts[i]);
             // i++;
+
+            // Suggested code from ChatGPT to store those values to the _entries list:
+
+            Entry entry = new Entry();
+
+            entry._date = date;
+            entry._promptText = promptText;
+            entry._entryText = entryText;
+
+            _entries.Add(entry);
         }
         
         // Console.WriteLine(parts[i]);
+
+        // Attempt 2:
+
+    // // try
+    // // {
+    //     // string filename = "myFile.txt";
+    //     string[] lines = File.ReadAllLines(file);
+
+    //     foreach (string line in lines)
+    //     {
+    //         string[] parts = line.Split(",");
+
+    //         // if (parts.Length >= 2)
+    //         // {
+    //             string date = parts[0];
+    //             string promptText = parts[1];
+    //             string entryText = parts[2];
+
+    //             Console.WriteLine($"Date: {date}, Prompt Text: {promptText}, Entry Text: {entryText}");
+    //     }
+    // //         }
+    // //         else
+    // //         {
+    // //             Console.WriteLine("Invalid line format: " + line);
+    // //         }
+    // //     }
+    // // }
+    // // catch (System.IO.FileNotFoundException e)
+    // // {
+    // //     Console.WriteLine("File not found: " + e.Message);
+    // // }
+    // // catch (Exception e)
+    // // {
+    // //     Console.WriteLine("An error occurred: " + e.Message);
+    // // }
+
+    }
+
+    public void DisplayMotivationQuote()
+    {
+        MotivationQuoteGenerator motivationQuote = new MotivationQuoteGenerator();
+        _motivationQuote = motivationQuote.GetRandomMotivationQuote();
+        Console.WriteLine();
+        Console.WriteLine(_motivationQuote);
+        Console.WriteLine();
     }
 }

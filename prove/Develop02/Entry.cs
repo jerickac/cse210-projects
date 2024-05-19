@@ -15,6 +15,6 @@ public class Entry
 
         DateTime theCurrentTime = DateTime.Now;
         _date = theCurrentTime.ToShortDateString();
-        Console.WriteLine(_date);
+        // Console.WriteLine(_date);
     }
 }

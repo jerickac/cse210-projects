@@ -8,15 +8,19 @@ class Program
         Journal journal = new Journal();
         // Entry entry = new Entry();
 
-        while (answer != 5)
+        Console.WriteLine("Welcome to the Journal Program!");
+
+        while (answer != 6)
         {
-            Console.WriteLine("Welcome to the Journal Program!");
             Console.WriteLine("Please select one of the following choices:");
+            Console.WriteLine();
             Console.WriteLine("1. Write");
             Console.WriteLine("2. Display");
             Console.WriteLine("3. Load");
             Console.WriteLine("4. Save");
-            Console.WriteLine("5. Quit");
+            Console.WriteLine("5. Read Motivation Quote");
+            Console.WriteLine("6. Quit");
+            Console.WriteLine();
             Console.Write("What would you like to do? ");
 
             string strAnswer = Console.ReadLine();
@@ -79,6 +83,13 @@ class Program
                 Console.WriteLine("What file do you want to open?");
                 string file = Console.ReadLine();   
                 journal.LoadFromFile(file);
+            }
+
+            else if (answer == 5)
+            {
+                // MotivationQuoteGenerator motivationQuote = new MotivationQuoteGenerator();
+                // motivationQuote = motivationQuote.GetRandomMotivationQuote();
+                journal.DisplayMotivationQuote();
             }
         }
 
