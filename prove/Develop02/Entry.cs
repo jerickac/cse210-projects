@@ -11,10 +11,8 @@ public class Entry
         Console.WriteLine(_promptText);
 
         _entryText = Console.ReadLine();
-        // Console.WriteLine(_entryText);
 
         DateTime theCurrentTime = DateTime.Now;
         _date = theCurrentTime.ToShortDateString();
-        // Console.WriteLine(_date);
     }
 }

@@ -6,7 +6,6 @@ class Program
     {
         int answer = 0;
         Journal journal = new Journal();
-        // Entry entry = new Entry();
 
         Console.WriteLine("Welcome to the Journal Program!");
 
@@ -28,38 +27,11 @@ class Program
             int answerInLoop = int.Parse(strAnswer);
             answer = answerInLoop;
 
-            // Journal journal = new Journal();
-            // Entry entry = new Entry();
-
-
             if (answer == 1)
             {
-                // // ALL THE CODE THAT WAS ALREADY HERE:
-                // Entry entry = new Entry();
-                // // entry.Display();
-
-                // // DateTime theCurrentTime = DateTime.Now;
-                // // entry._date = theCurrentTime.ToShortDateString();
-                // // Console.WriteLine(_date);
-
-                // // entry.Display();
-
-                // Journal journal = new Journal();
-                // journal.AddEntry(entry);
-
-                // // THE SUGGESTED CORRECTIONS FROM CHATGPT:
-                // Entry entry = new Entry(); // Create a new Entry object
-                // entry.Display(); // This will prompt the user for input and set entry properties
-
-                // Journal journal = new Journal();
-                // journal.AddEntry(entry); // Add the created entry to the journal
-
-                // The code that I filtered from everything I had already written:
-                // That is just exactly what ChatGPT was suggesting
                 Entry entry = new Entry();
                 entry.Display();
 
-                // Journal journal = new Journal();
                 journal.AddEntry(entry);
             }
 
@@ -67,7 +39,6 @@ class Program
             {
                 Console.WriteLine();
 
-                // Journal journal = new Journal();
                 journal.DisplayAll();
             }
 
@@ -87,8 +58,6 @@ class Program
 
             else if (answer == 5)
             {
-                // MotivationQuoteGenerator motivationQuote = new MotivationQuoteGenerator();
-                // motivationQuote = motivationQuote.GetRandomMotivationQuote();
                 journal.DisplayMotivationQuote();
             }
         }

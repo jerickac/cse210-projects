@@ -1,8 +1,6 @@
 public class MotivationQuoteGenerator
 {
     public List<string> _motivationQuotes = new List<string>();
-    
-    // int j = 0;
     int randomNumber = 0;
 
     public string GetRandomMotivationQuote()
@@ -18,7 +16,6 @@ public class MotivationQuoteGenerator
 
         for (int j = 0; j < 1; j++);
         randomNumber = rnd.Next(5);
-        // Console.WriteLine(_prompts[randomNumber]);
 
         return _motivationQuotes[randomNumber];
     }
