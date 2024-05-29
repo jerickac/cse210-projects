@@ -3,10 +3,10 @@ public class Assignment
     private string _studentName;
     private string _topic;
 
-    public Assignment()
+    public Assignment(string studentName, string topic)
     {
-        _studentName = "Anonymous";
-        _topic = "Subject";
+        _studentName = studentName;
+        _topic = topic;
     }
 
     public string GetSummary()
